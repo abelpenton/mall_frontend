@@ -12,7 +12,7 @@ export const AppConfig: IAppConfig = {
   endpoints: {
   },
   votesLimit: 20,
-  topSongsLimit: 6,
+  topSongsLimit: 3,
   snackBarDuration: 3000,
   repositoryURL: 'https://github.com/AIRfly/airfly-music-app'
 };

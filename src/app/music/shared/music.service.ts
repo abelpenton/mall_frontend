@@ -20,21 +20,21 @@ export class MusicService {
       name: 'Silent Love',
       album: 'NAMR GILL',
       imageAlbum: './../../../assets/images/music/11.jpg',
-      likes: 5
+      likes: 10
     },
     {
       id: 2,
       name: 'Dheere',
       album: 'ZACK KNIGHT',
       imageAlbum: './../../../assets/images/music/22.jpg',
-      likes: 4
+      likes: 11
     },
     {
       id: 3,
       name: 'NAKHRE',
       album: 'ZACK KNIGHT',
       imageAlbum: './../../../assets/images/music/33.jpg',
-      likes: 2
+      likes: 12
     },
     {
       id: 4,
