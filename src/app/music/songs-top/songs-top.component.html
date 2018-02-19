@@ -1,0 +1,33 @@
+<div fxLayout="row">
+  <div fxFlex="10" fxFlex.gt-sm="20"></div>
+  <div fxFlex="90" fxFlex.gt-sm="80">
+      <h1 class="section-title">{{'topsonges' | translate}}</h1>
+      <mat-progress-spinner *ngIf="!songs"
+                            class="progress-spinner"
+                            [color]="'primary'"
+                            [mode]="'indeterminate'">
+      </mat-progress-spinner>
+      <div id="songs-list" *ngIf="songs">
+          <ng-container *ngFor="let song of songs">
+              <mat-card class="song-card">
+                  <mat-card-header>
+                      <div mat-card-avatar class="song-header-image"
+                           [ngStyle]="{'background-image': 'song.imageAlbum'}"></div>
+                      <mat-card-title>{{song.name}}</mat-card-title>
+                      <mat-card-subtitle>{{song.album}}</mat-card-subtitle>
+                      <div class="flex-spacer"></div>
+                      <div class="song-actions">
+                          {{song.likes}}
+                          <mat-icon matTooltip="{{(canVote ? 'canVote' : 'cannotVote') | translate}}"
+                                    [matTooltipPosition]="'above'"
+                                    class="like-icon" (click)="like(song)">favorite
+                          </mat-icon>
+                      </div>
+                  </mat-card-header>
+                  <img mat-card-image  [src]="song.imageAlbum">
+              </mat-card>
+          </ng-container>
+      </div>
+  </div>
+  <div fxFlex="10" fxFlex.gt-sm="20"></div>
+</div>

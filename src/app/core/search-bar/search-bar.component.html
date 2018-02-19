@@ -1,0 +1,12 @@
+<mat-input-container>
+    <input matInput placeholder="{{ 'findsong' | translate }}!"
+           [matAutocomplete]="songsAutocomplete" [formControl]="songFormControl">
+</mat-input-container>
+
+<mat-autocomplete #songsAutocomplete="matAutocomplete">
+    <mat-option *ngFor="let song of filteredSongs"
+                (onSelectionChange)="searchSong(song)"
+                [value]="song.name">
+        {{song.name}}
+    </mat-option>
+</mat-autocomplete>

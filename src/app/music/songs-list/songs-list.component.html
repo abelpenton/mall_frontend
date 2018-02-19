@@ -1,0 +1,52 @@
+<div id="left">
+  <h2 class="section-title">{{ 'songsList' | translate }}</h2>
+  <div>
+      <mat-progress-spinner *ngIf="!songs"
+                            class="progress-spinner"
+                            [color]="'primary'"
+                            [mode]="'indeterminate'">
+      </mat-progress-spinner>
+      <mat-list>
+          <mat-list-item *ngFor="let song of songs">
+            <h1 mat-line [ngClass]="{'cp': song}" [routerLink]="['./../detail', song.id]"> {{song.name}} </h1>
+              <h5 mat-line [ngClass]="{'cp': song}" [routerLink]="['./../detail', song.id]">
+                  <span>{{song.album}}</span>
+              </h5>
+              <div class="song-actions">
+                  {{song.likes}}
+                  <mat-icon matTooltip="{{(canVote ? 'canVote' : 'cannotVote') | translate}}"
+                            [matTooltipPosition]="'above'"
+                            class="like-icon" (click)="like(song)">
+                      favorite
+                  </mat-icon>
+                  
+              </div>
+          </mat-list-item>
+      </mat-list>
+  </div>
+</div>
+<div id="right">
+  <h2 class="section-title">{{ 'createsong' | translate }}</h2>
+  <div>
+      <form [formGroup]="newSongForm" #form="ngForm" (ngSubmit)="createNewSong(newSongForm.value)">
+          <mat-input-container class="input-container">
+              <input matInput type="text"
+                     placeholder="{{'name' | translate}}"
+                     formControlName="name">
+          </mat-input-container>
+
+          <mat-input-container class="input-container">
+              <input matInput type="text"
+                     placeholder="{{'album' | translate}}"
+                     formControlName="album">
+          </mat-input-container>
+
+          <button mat-raised-button type="submit" [disabled]="!newSongForm.valid">
+              {{'create' | translate}}
+          </button>
+
+          <div *ngIf="error">{{error | translate}}</div>
+      </form>
+  </div>
+</div>
+<div class="clear"></div>
